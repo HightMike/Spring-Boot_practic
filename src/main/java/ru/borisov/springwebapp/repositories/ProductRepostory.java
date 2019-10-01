@@ -21,5 +21,4 @@ public class ProductRepostory {
         products.add (new Product(2L, "Coffee", 120));
         products.add (new Product(5L, "Jam", 60));
     }
-
 }

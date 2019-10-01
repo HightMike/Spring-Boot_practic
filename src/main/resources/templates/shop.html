@@ -15,7 +15,22 @@
     <h1>
         Shop
     </h1>
-    <span th:text = "${product.id + ' ' + product.title + ' ' + product.price}"></span>
-</div>
+    <table class ="table table-hover">
+        <thead class = "thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Price</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${allProduct}">
+                <td th:text="${product.id}"/>
+                <td th:text="${product.title}"/>
+                <td th:text="${product.price}"/>
+            </tr>
+        </tbody>
+    </table>
+    </div>
 </body>
 </html>
