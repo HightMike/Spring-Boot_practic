@@ -5,28 +5,27 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.borisov.springwebapp.entities.Product;
-import ru.borisov.springwebapp.repositories.ProductRepostory;
+import ru.borisov.springwebapp.repositories.ProductRepository;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Service
 public class ProductService {
 
-    private ProductRepostory productRepostory;
+    private ProductRepository productRepository;
 
     @Autowired
-    public void setProductRepository(ProductRepostory productRepostory) {
-        this.productRepostory = productRepostory;
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     public List<Product> getAllProducts() {
-        return productRepostory.getProducts();
+        return productRepository.findAll();
     }
 
     public Product getProductById(Long id) {
-        return productRepostory.getProducts().get(id.intValue()-1);
+        return productRepository.getOne(id);
     }
+
 }
