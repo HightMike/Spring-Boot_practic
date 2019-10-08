@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.borisov.springwebapp.entities.Product;
 import ru.borisov.springwebapp.services.ProductService;
 
@@ -36,6 +37,13 @@ public class MainController {
     @GetMapping("/details/{id}")
     public String detailsPage(Model model, @PathVariable("id") Long id) {
         Product selProduct = productService.getProductById(id);
+        model.addAttribute("selProduct", selProduct);
+        return "details";
+    }
+
+    @GetMapping("/find_by_title")
+    public String detailsPageByTitle(Model model, @RequestParam("title") String title) {
+        Product selProduct = productService.getProductByTitle(title);
         model.addAttribute("selProduct", selProduct);
         return "details";
     }
